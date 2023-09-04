@@ -30,12 +30,17 @@ const handleDragOver = (event) => {
 
 const handleDragStart = (event) => {}
 const handleDragEnd = (event) => {}
+
 const handleHelpToggle = (event) => {}
-const handleAddToggle = (event) => {}
-const handleAddSubmit = (event) => {}
+const handleAddToggle = (event) => {
+const addButton= document.querySelector ('.overlay')
+
+
+}
+/*const handleAddSubmit = (event) => {}
 const handleEditToggle = (event) => {}
 const handleEditSubmit = (event) => {}
-const handleDelete = (event) => {}
+const handleDelete = (event) => {}*/
 
 html.add.cancel.addEventListener('click', handleAddToggle)
 html.other.add.addEventListener('click', handleAddToggle)
@@ -55,5 +60,4 @@ for (const htmlColumn of Object.values(html.columns)) {
 }
 
 for (const htmlArea of Object.values(html.area)) {
-    htmlArea.addEventListener('dragover', handleDragOver)
-}
+    htmlArea.addEventListener('dragover', handleDragOver)} */
