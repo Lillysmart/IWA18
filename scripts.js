@@ -32,25 +32,32 @@ const handleDragStart = (event) => {}
 const handleDragEnd = (event) => {}
 
 const handleHelpToggle = (event) => {
-    const helpButton= document.querySelector('.help')
-    //event.preventDefault();
-    helpButton.show ()
+    const helpDialog = document.querySelector('[data-help-overlay]');
+    helpDialog.show()
 
-    
-    
-}
+    closeButton=document.querySelector("[data-help-cancel]")
+    if (helpButton.show()
+    ){helpDialog.close()} }
 
-const helpDialog = document.querySelector('[data-help-overlay]');
+const helpButton = document.querySelector('.help');
+helpButton.addEventListener('click', handleHelpToggle)
+closeButton.addEventListener('click', handleAddToggle)
+   
+
+
+/*const helpDialog = document.querySelector('[data-help-overlay]');
 const h2 = helpDialog.querySelector("h2.overlay__title")
-const p =helpDialog.querySelector("p  strong ")
+const p =helpDialog.querySelector("p  strong ")*/
   
 
 
 const handleAddToggle = (event) => {
 const addButton= window.document.querySelector (' .button_primary')
 addButton.focus()
-
 }
+
+window.addEventListener('click', handleAddToggle())
+
 
 
 /*const handleAddSubmit = (event) => {}
@@ -58,7 +65,6 @@ const handleEditToggle = (event) => {}
 const handleEditSubmit = (event) => {}
 const handleDelete = (event) => {}*/
 
-window.addEventListener('click', handleAddToggle())
   
 
     
@@ -74,7 +80,6 @@ html.edit.form.addEventListener('submit', handleEditSubmit)
 html.edit.delete.addEventListener('click', handleDelete)
 
 html.help.cancel.addEventListener('click', handleHelpToggle)*/
-window.addEventListener('click', handleHelpToggle ())
 
 /*for (const htmlColumn of Object.values(html.columns)) {
     htmlColumn.addEventListener('dragstart', handleDragStart)
