@@ -34,15 +34,14 @@ const handleDragEnd = (event) => {}
 const handleHelpToggle = (event) => {
     const helpDialog = document.querySelector('[data-help-overlay]');
     helpDialog.show()
-
-    closeButton=document.querySelector("[data-help-cancel]")
-    if (helpButton.show()
-    ){helpDialog.close()} }
-
+    const closeButton=document.querySelector("[data-help-cancel]") 
+    if (closeButton){
+      
+    }
+         }
 const helpButton = document.querySelector('.help');
 helpButton.addEventListener('click', handleHelpToggle)
-closeButton.addEventListener('click', handleAddToggle)
-   
+window.addEventListener('click',handleHelpToggle)
 
 
 /*const helpDialog = document.querySelector('[data-help-overlay]');
