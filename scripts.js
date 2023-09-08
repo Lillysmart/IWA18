@@ -1,6 +1,10 @@
+
+
 import { html } from "./view.js";
-import { createOrderHtml } from "./view.js";
+//import { createOrderHtml } from "./view.js";
 import { updateDraggingHtml } from "./view.js";
+//import { createOrderData } from "./data";
+import { updateDragging } from "./data";
 
 /** must use a path propety 
  * if an element with a area , is clicked ,it should take the html
@@ -64,17 +68,23 @@ const handlehelpclose =(event)=>{
 closeButton.addEventListener("click",handlehelpclose)
 
 
-const addButton= document.querySelector (' .button_primary')
+const addButton= document.querySelector ('[data-add]')
 const addOverlay =document.querySelector('[data-add-overlay]')
 const cancel =html.add.cancel
  const overlayForm =html.add.form
+ const overlay = data.add.overlay
  console.log (overlayForm)
 
-const handleAddToggle = (event) => {
-addButton.focus()
-addOverlay.show()
-const {overlay,form, cancel } = html.add; 
-}
+const handleAddToggle = (e) => { //e stands for event object (click event)
+    html.other.add.focus(); 
+    const {overlay, cancel, form} = html.add; //extracts three variables from html.add.
+    overlay.show(); //the method is called to display a hidden element.
+    if (e.target === cancel) { 
+      overlay.close();
+      form.reset(); //reset() method is used to clear the form's input fields and reset them to their default values
+    }
+  };
+  
 
 const handleCancel =()=>{
   overlayForm.reset()
@@ -84,7 +94,22 @@ addButton.addEventListener('click', handleAddToggle)
 cancel.addEventListener("click",handleCancel)
 console.log (html)
 
-/*const handleAddSubmit = (event) => {}
+
+/*const appendData = document.querySelector('[data-area="ordered"]');
+const handleAddSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target); // allows us to access forms input field
+    const data = Object.fromEntries(formData); //Object.fromEntries() method - transforms data into usable format
+    const newData = createOrderData(data); // used function to process and organize data defined in our data.js
+    const htmlData = createOrderHtml(newData); 
+    e.target.reset(); 
+    addOverlay.close(); 
+    appendData.appendChild(htmlData); 
+  };
+  
+  html.add.form.addEventListener("submit", handleAddSubmit);
+//addButton.addEventListener("submit", handleAddSubmit);
+/*
 const handleEditToggle = (event) => {}
 const handleEditSubmit = (event) => {}
 const handleDelete = (event) => {}*/
