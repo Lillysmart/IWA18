@@ -1,10 +1,7 @@
 
+import { createOrderHtml, html, updateDraggingHtml } from "./view.js";
 
-import { html } from "./view.js";
-//import { createOrderHtml } from "./view.js";
-import { updateDraggingHtml } from "./view.js";
-//import { createOrderData } from "./data";
-import { updateDragging } from "./data";
+import { createOrderData, updateDragging } from "./data.js";
 
 /** must use a path propety 
  * if an element with a area , is clicked ,it should take the html
@@ -72,18 +69,14 @@ const addButton= document.querySelector ('[data-add]')
 const addOverlay =document.querySelector('[data-add-overlay]')
 const cancel =html.add.cancel
  const overlayForm =html.add.form
- const overlay = data.add.overlay
+ //const overlay = data.add.overlay
  console.log (overlayForm)
 
-const handleAddToggle = (e) => { //e stands for event object (click event)
-    html.other.add.focus(); 
-    const {overlay, cancel, form} = html.add; //extracts three variables from html.add.
-    overlay.show(); //the method is called to display a hidden element.
-    if (e.target === cancel) { 
-      overlay.close();
-      form.reset(); //reset() method is used to clear the form's input fields and reset them to their default values
-    }
-  };
+ const handleAddToggle = (event) => {
+  addButton.focus()
+  addOverlay.show()
+  const {overlay,form, cancel } = html.add; 
+  }
   
 
 const handleCancel =()=>{
