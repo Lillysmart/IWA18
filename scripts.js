@@ -66,14 +66,22 @@ closeButton.addEventListener("click",handlehelpclose)
 
 const addButton= document.querySelector (' .button_primary')
 const addOverlay =document.querySelector('[data-add-overlay]')
+const cancel =html.add.cancel
+ const overlayForm =html.add.form
+ console.log (overlayForm)
+
 const handleAddToggle = (event) => {
 addButton.focus()
 addOverlay.show()
 const {overlay,form, cancel } = html.add; 
 }
 
-
+const handleCancel =()=>{
+  overlayForm.reset()
+  addOverlay.close()
+}
 addButton.addEventListener('click', handleAddToggle)
+cancel.addEventListener("click",handleCancel)
 console.log (html)
 
 /*const handleAddSubmit = (event) => {}
@@ -82,7 +90,7 @@ const handleEditSubmit = (event) => {}
 const handleDelete = (event) => {}*/
 
   
-
+/*
     
 
  
@@ -102,4 +110,4 @@ for (const htmlColumn of Object.values(html.columns)) {
 }
 
 for (const htmlArea of Object.values(html.area)) {
-    htmlArea.addEventListener('dragover', handleDragOver)} 
+    htmlArea.addEventListener('dragover', handleDragOver)} */
