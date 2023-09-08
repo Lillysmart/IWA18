@@ -1,4 +1,12 @@
-/**
+import { html } from "./view.js";
+import { createOrderHtml } from "./view.js";
+import { updateDraggingHtml } from "./view.js";
+
+/** must use a path propety 
+ * if an element with a area , is clicked ,it should take the html
+ * import updatedragging , state ,updatehtml, createorderData from data.js
+ * importcreateOrder ,updateDraggingHtml, movetocolumn  from view.js
+ * 
  * A handler that fires when a user drags over any element inside a column. In
  * order to determine which column the user is dragging over the entire event
  * bubble path is checked with `event.path` (or `event.composedPath()` for
@@ -27,37 +35,45 @@ const handleDragOver = (event) => {
     updateDraggingHtml({ over: column })
 }
 
-
+// setting the source
 const handleDragStart = (event) => {}
+
+//updating the column , in the state object , until the user stops dragging
+//what kind of loop is suitable in the path 
+//how to check if an element has a data area attritube and what to do after it finds
 const handleDragEnd = (event) => {}
 
+
+const helpOverlay = document.querySelector('[data-help-overlay]');
 const handleHelpToggle = (event) => {
-    const helpDialog = document.querySelector('[data-help-overlay]');
-    helpDialog.show()
-    const closeButton=document.querySelector("[data-help-cancel]") 
-    if (closeButton){
-      
+    //preventDefault()
+    helpOverlay.show()
+     
+  
     }
-         }
+         
 const helpButton = document.querySelector('.help');
 helpButton.addEventListener('click', handleHelpToggle)
-window.addEventListener('click',handleHelpToggle)
+helpButton.addEventListener('click',handleHelpToggle)
+
+const closeButton=document.querySelector("[data-help-cancel]")
+
+const handlehelpclose =(event)=>{
+    helpOverlay.close();
+}
+closeButton.addEventListener("click",handlehelpclose)
 
 
-/*const helpDialog = document.querySelector('[data-help-overlay]');
-const h2 = helpDialog.querySelector("h2.overlay__title")
-const p =helpDialog.querySelector("p  strong ")*/
-  
-
-
+const addButton= document.querySelector (' .button_primary')
+const addOverlay =document.querySelector('[data-add-overlay]')
 const handleAddToggle = (event) => {
-const addButton= window.document.querySelector (' .button_primary')
 addButton.focus()
+addOverlay.show()
 }
 
-window.addEventListener('click', handleAddToggle())
 
-
+addButton.addEventListener('click', handleAddToggle)
+console.log (html)
 
 /*const handleAddSubmit = (event) => {}
 const handleEditToggle = (event) => {}
@@ -69,7 +85,6 @@ const handleDelete = (event) => {}*/
     
 
  
-/*
 html.other.add.addEventListener('click', handleAddToggle)
 html.add.form.addEventListener('submit', handleAddSubmit)
 
@@ -78,12 +93,12 @@ html.edit.cancel.addEventListener('click', handleEditToggle)
 html.edit.form.addEventListener('submit', handleEditSubmit)
 html.edit.delete.addEventListener('click', handleDelete)
 
-html.help.cancel.addEventListener('click', handleHelpToggle)*/
+html.help.cancel.addEventListener('click', handleHelpToggle)
 
-/*for (const htmlColumn of Object.values(html.columns)) {
+for (const htmlColumn of Object.values(html.columns)) {
     htmlColumn.addEventListener('dragstart', handleDragStart)
     htmlColumn.addEventListener('dragend', handleDragEnd)
 }
 
 for (const htmlArea of Object.values(html.area)) {
-    htmlArea.addEventListener('dragover', handleDragOver)} */
+    htmlArea.addEventListener('dragover', handleDragOver)} 
